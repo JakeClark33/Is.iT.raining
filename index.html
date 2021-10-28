@@ -1,100 +1,154 @@
-<HTml:5>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="css" href="css/styles.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-  <title>Is it Raining?</title>
-</head>
-
-<body>
-    <form id="userInput">
-        <p>City Name</p>
-        <input type="text" id="location">
-        <button type="submit">Search</button>
-    </form>
-
-  <div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-        <div class="col">Column</div>
-        <div class="col">Column</div>
-        <div class="col">Column</div>
-        <div class="col">Column</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"/>
+    <link rel="stylesheet" href="styles.css"/>
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Weather Dashboard</span>
+        </div>
+      </header>
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--3-col">
+              <div class="search-card mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                  <h2 class="mdl-card__title-text">Search for a city</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                  <form id="search-form">
+                    <div id="search-input-wrapper" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="text" id="search-input">
+                      <label class="mdl-textfield__label" for="sample3">City</label>
+                    </div>
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                      Search
+                    </button>
+                  </form>
+                </div>
+                <div id="search-history" class="mdl-card__actions mdl-card--border"></div>
+              </div>
+            </div>
+            <div class="mdl-cell mdl-cell--9-col">
+              <div id="forecast-wrapper" class="hidden">
+                <h2 id="city"></h3>
+                <div class="forecast-card mdl-card mdl-shadow--2dp">
+                  <div class="mdl-card__title">
+                    <h2 id="info-current" class="mdl-card__title-text"></h2>
+                  </div>
+                  <div class="mdl-card__supporting-text">
+                    <div id="forecast-inner-wrapper">
+                      <img id="icon-current">
+                      <div>
+                        <p>Temp: <span id="temp-current"></span>&#176;F</p>
+                        <p>Wind: <span id="wind-current"></span> MPH</p>
+                        <p>Humidity: <span id="humidity-current"></span> %</p>
+                        <p>UV Index: <span id="uv-index-current"></span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h4>5-Day Forecast:</h4>
+                <div class="five-card-container">
+                  <div class="five-day-card-wrapper">
+                    <h5 id="day-0"></h5>
+                    <div class="five-day-card mdl-card mdl-shadow--2dp">
+                      <div class="mdl-card__title">
+                        <h2 id="date-day-0" class="mdl-card__title-text"></h2>
+                      </div>
+                      <div class="mdl-card__supporting-text">
+                        <img id="icon-day-0">
+                        <p>Temp: <span id="temp-day-0"></span>&#176;F</p>
+                        <p>Wind: <span id="wind-day-0"></span> MPH</p>
+                        <p>Humidity: <span id="humidity-day-0"></span> %</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="five-day-card-wrapper">
+                    <h5 id="day-1"></h5>
+                    <div class="five-day-card mdl-card mdl-shadow--2dp">
+                      <div class="mdl-card__title">
+                        <h2 id="date-day-1" class="mdl-card__title-text"></h2>
+                      </div>
+                      <div class="mdl-card__supporting-text">
+                        <img id="icon-day-1">
+                        <p>Temp: <span id="temp-day-1"></span>&#176;F</p>
+                        <p>Wind: <span id="wind-day-1"></span> MPH</p>
+                        <p>Humidity: <span id="humidity-day-1"></span> %</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="five-day-card-wrapper">
+                    <h5 id="day-2"></h5>
+                    <div class="five-day-card mdl-card mdl-shadow--2dp">
+                      <div class="mdl-card__title">
+                        <h2 id="date-day-2" class="mdl-card__title-text"></h2>
+                      </div>
+                      <div class="mdl-card__supporting-text">
+                        <img id="icon-day-2">
+                        <p>Temp: <span id="temp-day-2"></span>&#176;F</p>
+                        <p>Wind: <span id="wind-day-2"></span> MPH</p>
+                        <p>Humidity: <span id="humidity-day-2"></span> %</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="five-day-card-wrapper">
+                    <h5 id="day-3"></h5>
+                    <div class="five-day-card mdl-card mdl-shadow--2dp">
+                      <div class="mdl-card__title">
+                        <h2 id="date-day-3" class="mdl-card__title-text"></h2>
+                      </div>
+                      <div class="mdl-card__supporting-text">
+                        <img id="icon-day-3">
+                        <p>Temp: <span id="temp-day-3"></span>&#176;F</p>
+                        <p>Wind: <span id="wind-day-3"></span> MPH</p>
+                        <p>Humidity: <span id="humidity-day-3"></span> %</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="five-day-card-wrapper">
+                    <h5 id="day-4"></h5>
+                    <div class="five-day-card mdl-card mdl-shadow--2dp">
+                      <div class="mdl-card__title">
+                        <h2 id="date-day-4" class="mdl-card__title-text"></h2>
+                      </div>
+                      <div class="mdl-card__supporting-text">
+                        <img id="icon-day-4">
+                        <p>Temp: <span id="temp-day-4"></span>&#176;F</p>
+                        <p>Wind: <span id="wind-day-4"></span> MPH</p>
+                        <p>Humidity: <span id="humidity-day-4"></span> %</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div id="loading-indicator" class="hidden">
+      <div class="loading-card mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Loading...</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+          <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+        </div>
       </div>
     </div>
-
-    <div id="weather">
-
-      <div class="main-info">
-        <p id="temp"></p>
-        <p id="city"></p>
-        <p id="date"></p>
-        <img id="weather_icon" src="">
-      </div>
-
-      <div class="sunrise-sunset">
-        <div id="Monday"class="main-info">
-            <p>Monday</p>
-            <p id="temp"></p>
-            <p id="date"></p>
-          <p>Sunrise<span id="sunrise"></span></p>
-        </div>
-        <div>
-          <p>Sunset<span id="sunset"></span></p>
-        </div>
-        <div id="Tuesday"class="main-info">
-            <p>Tuesday</p>
-            <p id="temp"></p>
-            <p id="date"></p>
-          <p>Sunrise<span id="sunrise"></span></p>
-        </div>
-        <div>
-          <p>Sunset<span id="sunset"></span></p>
-        </div>
-        <div id="Wednesday"class="main-info">
-            <p>Wednesday</p>
-            <p id="temp"></p>
-            <p id="date"></p>
-          <p>Sunrise<span id="sunrise"></span></p>
-        </div>
-        <div>
-          <p>Sunset<span id="sunset"></span></p>
-        </div>
-        <div id="Thursday"class="main-info">
-            <p>Thursday</p>
-            <p id="temp"></p>
-            <p id="date"></p>
-          <p>Sunrise<span id="sunrise"></span></p>
-        </div>
-        <div>
-          <p>Sunset<span id="sunset"></span></p>
-        </div>
-        <div id="Friday"class="main-info">
-            <p>Friday</p>
-            <p id="temp"></p>
-            <p id="date"></p>
-          <p>Sunrise<span id="sunrise"></span></p>
-        </div>
-        <div>
-          <p>Sunset<span id="sunset"></span></p>
-        </div>
-      </div>
-
-      <div id="days">
-      </div>
-
+    <div id="snackbar" aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button type="button" class="mdl-snackbar__action"></button>
     </div>
-  </div>
-
-  
-
-
-  <script src="js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-
-</HTml:5>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

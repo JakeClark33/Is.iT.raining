@@ -1,0 +1,69 @@
+.search-card, .forecast-card {
+    width: 100%;
+  }
+  
+  .five-day-card-wrapper {
+    flex-grow: 1;
+  }
+  
+  .five-day-card-wrapper h5 {
+    text-align: center;
+  }
+  
+  .five-day-card {
+    width: auto;
+    background-color: darkgray;
+  }
+  
+  .five-day-card .mdl-card__title,
+  .five-day-card .mdl-card__supporting-text {
+    color: white;
+  }
+  
+  .five-card-container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+  
+  #search-history {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  
+  .search-chip {
+    cursor: pointer;
+  }
+  
+  #loading-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+  }
+  
+  .mdl-card.loading-card {
+    min-height: auto;
+  }
+  
+  .mdl-card.loading-card .mdl-card__title-text {
+    margin: 0 auto;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  #forecast-inner-wrapper {
+    display: flex;
+    gap: 16px;
+  }
+  
